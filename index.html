@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0067)file:///C:/Users/%EB%B0%95%EB%B2%94%EC%B0%BD/Downloads/index_8.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#faf8f3">
 <title>주문관리</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./index_files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
@@ -295,7 +295,7 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
   <div class="topbar">
     <div class="topbar-inner">
       <div class="brand">ULL<span>/ 주문관리</span></div>
-      <div id="todayLabel" class="date-badge"></div>
+      <div id="todayLabel" class="date-badge">2026.06.09 (화)</div>
     </div>
   </div>
 
@@ -305,18 +305,18 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
     <div class="page active" id="page-today">
       <div class="page-inner">
       <div class="stats-row">
-        <div class="stat-card"><div class="stat-label">오늘 주문</div><div class="stat-val" id="s-total">—</div></div>
-        <div class="stat-card"><div class="stat-label">봉투 완료</div><div class="stat-val g" id="s-done">—</div></div>
+        <div class="stat-card"><div class="stat-label">오늘 주문</div><div class="stat-val" id="s-total">0</div></div>
+        <div class="stat-card"><div class="stat-label">봉투 완료</div><div class="stat-val g" id="s-done">0</div></div>
       </div>
       <div class="search-outer">
         <span class="search-ic">🔍</span>
         <input class="search-inp" type="search" placeholder="거래처 또는 품목 검색" id="todaySearch" oninput="renderToday()">
       </div>
       <div class="sec-head">
-        <div class="sec-label">미완료 <span id="s-remain" style="color:var(--text);font-weight:700">—</span></div>
+        <div class="sec-label">미완료 <span id="s-remain" style="color:var(--text);font-weight:700">0</span></div>
         <button class="text-btn" onclick="openAdd()">+ 직접 추가</button>
       </div>
-      <div class="order-list" id="order-list"></div>
+      <div class="order-list" id="order-list"><div class="empty"><div class="empty-ic">📭</div><div class="empty-txt">오늘 주문이 없어요</div></div></div>
       </div>
     </div>
 
@@ -324,9 +324,9 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
     <div class="page" id="page-history">
       <div class="page-inner">
       <div class="seg">
-        <button class="seg-btn on" onclick="setSeg(this,'week')">이번 주</button>
-        <button class="seg-btn" onclick="setSeg(this,'month')">이번 달</button>
-        <button class="seg-btn" onclick="setSeg(this,'date')">📅 날짜</button>
+        <button class="seg-btn on" onclick="setSeg(this,&#39;week&#39;)">이번 주</button>
+        <button class="seg-btn" onclick="setSeg(this,&#39;month&#39;)">이번 달</button>
+        <button class="seg-btn" onclick="setSeg(this,&#39;date&#39;)">📅 날짜</button>
       </div>
       <div class="date-picker-row" id="date-picker-row">
         <input type="date" id="hist-from" class="date-inp" onchange="renderHistory()">
@@ -358,7 +358,7 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
       <div class="upload-panel" id="upload-panel">
         <div style="font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px;font-family:var(--mono)">엑셀 일괄 등록</div>
         <div style="font-size:11px;color:var(--t2);margin-bottom:10px;line-height:1.6;font-family:var(--mono)">1열: 거래처명 / 2열: 주요품목<br>첫 행 헤더 자동 스킵</div>
-        <div class="upload-drop" onclick="document.getElementById('xl-input').click()">
+        <div class="upload-drop" onclick="document.getElementById(&#39;xl-input&#39;).click()">
           <input type="file" id="xl-input" accept=".xlsx,.xls,.csv" style="display:none" onchange="handleUpload(this)">
           <div class="upload-drop-text">파일 선택</div>
           <div class="upload-drop-sub">.xlsx · .xls · .csv</div>
@@ -391,10 +391,10 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
 
   <div class="tabbar-wrap">
     <div class="tabbar">
-      <button class="tab-btn active" onclick="showPage('today',this)"><span class="tab-icon">📋</span><span class="tab-label">오늘</span></button>
-      <button class="tab-btn" onclick="showPage('history',this)"><span class="tab-icon">📅</span><span class="tab-label">내역</span></button>
-      <button class="tab-btn" onclick="showPage('clients',this)"><span class="tab-icon">🏪</span><span class="tab-label">거래처</span></button>
-      <button class="tab-btn" onclick="showPage('blend',this)"><span class="tab-icon">☕</span><span class="tab-label">블렌드</span></button>
+      <button class="tab-btn active" onclick="showPage(&#39;today&#39;,this)"><span class="tab-icon">📋</span><span class="tab-label">오늘</span></button>
+      <button class="tab-btn" onclick="showPage(&#39;history&#39;,this)"><span class="tab-icon">📅</span><span class="tab-label">내역</span></button>
+      <button class="tab-btn" onclick="showPage(&#39;clients&#39;,this)"><span class="tab-icon">🏪</span><span class="tab-label">거래처</span></button>
+      <button class="tab-btn" onclick="showPage(&#39;blend&#39;,this)"><span class="tab-icon">☕</span><span class="tab-label">블렌드</span></button>
     </div>
   </div>
 </div>
@@ -409,14 +409,14 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
     <div class="sheet-title" id="add-title">주문 추가</div>
     <div class="field" style="position:relative">
       <label>거래처명</label>
-      <input id="f-co" placeholder="거래처명 입력 또는 선택" autocomplete="off"
-        oninput="showSuggest(this.value)" onfocus="showSuggest(this.value)" onblur="setTimeout(hideSuggest,180)">
+      <input id="f-co" placeholder="거래처명 입력 또는 선택" autocomplete="off" oninput="showSuggest(this.value)" onfocus="showSuggest(this.value)" onblur="setTimeout(hideSuggest,180)">
       <div class="co-suggest" id="co-suggest"></div>
     </div>
     <div class="field">
       <label>품목 · 수량 <span style="font-size:10px;color:var(--t3);text-transform:none;letter-spacing:0">줄바꿈으로 여러 품목</span></label>
-      <textarea id="f-lines" style="height:100px;line-height:1.7"
-        placeholder="브라질 원두 5kg&#10;에티오피아 원두 3kg&#10;블렌드A 10kg"></textarea>
+      <textarea id="f-lines" style="height:100px;line-height:1.7" placeholder="브라질 원두 5kg
+에티오피아 원두 3kg
+블렌드A 10kg"></textarea>
     </div>
     <div class="field">
       <label>메모</label>
@@ -440,8 +440,9 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
     <div class="sheet-title">발주고 알림 붙여넣기</div>
     <div class="field">
       <label>알림 텍스트</label>
-      <textarea id="paste-txt" style="height:110px"
-        placeholder="예&#10;[발주고] 카페드림 주문&#10;브라질원두 5kg" oninput="parsePaste()"></textarea>
+      <textarea id="paste-txt" style="height:110px" placeholder="예
+[발주고] 카페드림 주문
+브라질원두 5kg" oninput="parsePaste()"></textarea>
     </div>
     <div id="parse-box" style="display:none;margin-top:10px;padding:11px 13px;background:var(--gbg);border-radius:9px;border:1px solid rgba(31,186,136,.2)">
       <div style="font-size:12px;color:var(--green);font-family:var(--mono)" id="pr-co"></div>
@@ -483,7 +484,7 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
     <div class="field">
       <label>원두 구성 비율</label>
       <div class="ratio-rows" id="ratio-rows"></div>
-      <button class="ratio-add" onclick="addRatioRow('','')">+ 원두 추가</button>
+      <button class="ratio-add" onclick="addRatioRow(&#39;&#39;,&#39;&#39;)">+ 원두 추가</button>
     </div>
     <div class="field"><label>메모</label><textarea id="bl-memo" style="height:68px" placeholder="로스팅 포인트, 맛 특징 등"></textarea></div>
     <div class="sheet-actions">
@@ -734,10 +735,11 @@ function startApp(cfg) {
       var ds2=byD[dt].slice().sort(function(a,b){var ta=a.createdAt&&a.createdAt.seconds?a.createdAt.seconds:0;var tb=b.createdAt&&b.createdAt.seconds?b.createdAt.seconds:0;return ta-tb});
       var label=dt===todayStr()?'오늘 ('+fd(dt)+')':fd(dt);
       var rows=ds2.map(function(o){
-        return'<div class="hist-row">'
+        return'<div class="hist-row" style="cursor:pointer;position:relative" onclick="openEdit(\''+o.id+'\')">'
           +'<div class="hdot '+(o.done?'done':'pend')+'"></div>'
           +'<div class="hm"><div class="hm-co">'+esc(o.company)+'</div>'
           +'<div class="hm-it">'+esc((o.lines||[]).join(' / '))+'</div></div>'
+          +'<button class="del-btn" style="position:static;margin-left:auto" onclick="event.stopPropagation();delOrder(\''+o.id+'\')">✕</button>'
         +'</div>';
       }).join('');
       return'<div class="day-group">'
@@ -937,5 +939,6 @@ function startApp(cfg) {
   });
 }
 </script>
-</body>
-</html>
+
+
+</body></html>
