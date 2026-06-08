@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0068)file:///C:/Users/%EB%B0%95%EB%B2%94%EC%B0%BD/Downloads/index_27.html -->
+<!-- saved from url=(0068)file:///C:/Users/%EB%B0%95%EB%B2%94%EC%B0%BD/Downloads/index_28.html -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -226,32 +226,13 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
 </head>
 <body>
 
-<!-- Firebase 초기 설정 화면 -->
-<div class="cfg-screen" id="cfgScreen" style="display: flex;">
-  <div class="cfg-logo">☕</div>
-  <div class="cfg-title">주문관리 앱 설정</div>
-  <div class="cfg-sub">Firebase 연결 정보를 입력해주세요.<br>한 번만 입력하면 이후 자동으로 연결돼요.</div>
-  <div class="cfg-field">
-    <label>API KEY</label>
-    <input id="cfg-apiKey" placeholder="AIzaSy...">
-  </div>
-  <div class="cfg-field">
-    <label>AUTH DOMAIN</label>
-    <input id="cfg-authDomain" placeholder="your-app.firebaseapp.com">
-  </div>
-  <div class="cfg-field">
-    <label>PROJECT ID</label>
-    <input id="cfg-projectId" placeholder="your-project-id">
-  </div>
-  <button class="cfg-btn" onclick="saveConfig()">저장하고 시작하기</button>
-  <div class="cfg-note">입력한 정보는 이 기기에만 저장돼요.<br>4명 모두 같은 값을 입력하면 실시간 공유됩니다.</div>
-</div>
+<!-- Firebase 설정 하드코딩됨 -->
 
 <!-- 메인 앱 -->
-<div class="shell" id="mainApp" style="display:none">
+<div class="shell" id="mainApp">
   <div class="topbar">
     <div class="brand-name">주문관리</div>
-    <div id="todayLabel" class="date-badge"></div>
+    <div id="todayLabel" class="date-badge">2026.06.08 (월)</div>
   </div>
 
   <div class="pages">
@@ -259,18 +240,18 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
     <!-- ① 오늘 -->
     <div class="page active" id="page-today">
       <div class="stats-row">
-        <div class="stat-card"><div class="stat-label">오늘 주문</div><div class="stat-val" id="s-total">—</div></div>
-        <div class="stat-card"><div class="stat-label">봉투 완료</div><div class="stat-val g" id="s-done">—</div></div>
+        <div class="stat-card"><div class="stat-label">오늘 주문</div><div class="stat-val" id="s-total">0건</div></div>
+        <div class="stat-card"><div class="stat-label">봉투 완료</div><div class="stat-val g" id="s-done">0건</div></div>
       </div>
       <div style="padding:4px 16px 0 16px;position:relative">
         <span class="search-ic">🔍</span>
         <input class="search-inp" type="search" placeholder="거래처 또는 품목 검색" id="todaySearch" oninput="renderToday()">
       </div>
       <div class="sec-head">
-        <div class="sec-label">미완료 <span id="s-remain" style="color:var(--text);font-size:13px;font-weight:700">—</span></div>
+        <div class="sec-label">미완료 <span id="s-remain" style="color:var(--text);font-size:13px;font-weight:700">0건</span></div>
         <button class="text-btn" onclick="openAdd()">+ 직접 추가</button>
       </div>
-      <div class="order-list" id="order-list"></div>
+      <div class="order-list" id="order-list"><div class="empty"><div class="empty-ic">📭</div><div class="empty-txt">오늘 주문이 없어요</div></div></div>
     </div>
 
     <!-- ② 내역 -->
@@ -344,7 +325,7 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
   </div>
 </div>
 
-<button class="fab" id="fab" onclick="onFab()" style="display:none">＋</button>
+<button class="fab" id="fab" onclick="onFab()">＋</button>
 <div class="toast" id="toast"></div>
 
 <!-- 주문 모달 -->
@@ -445,27 +426,13 @@ import { initializeApp }          from 'https://www.gstatic.com/firebasejs/10.12
 import { getFirestore, collection, doc, addDoc, updateDoc, deleteDoc, onSnapshot, query, orderBy, Timestamp }
   from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
-// ── CONFIG ──
-function getCfg(){ try{ return JSON.parse(localStorage.getItem('wdcf_cfg')||'null'); }catch(e){ return null; } }
-
-window.saveConfig = function(){
-  var apiKey     = document.getElementById('cfg-apiKey').value.trim();
-  var authDomain = document.getElementById('cfg-authDomain').value.trim();
-  var projectId  = document.getElementById('cfg-projectId').value.trim();
-  if(!apiKey||!projectId){ alert('API Key와 Project ID는 필수예요.'); return; }
-  localStorage.setItem('wdcf_cfg', JSON.stringify({apiKey:apiKey,authDomain:authDomain,projectId:projectId}));
-  location.reload();
+// ── Firebase 설정 (하드코딩) ──
+var cfg = {
+  apiKey:     "AIzaSyDUEgFTyHa47Rt0NGPE-quBgt64n94By8I",
+  authDomain: "customer-92a60.firebaseapp.com",
+  projectId:  "customer-92a60"
 };
-
-var cfg = getCfg();
-if(!cfg){
-  document.getElementById('cfgScreen').style.display='flex';
-} else {
-  document.getElementById('cfgScreen').style.display='none';
-  document.getElementById('mainApp').style.display='flex';
-  document.getElementById('fab').style.display='flex';
-  startApp(cfg);
-}
+startApp(cfg);
 
 function startApp(cfg){
   var app = initializeApp(cfg);
@@ -925,7 +892,6 @@ function startApp(cfg){
   });
 }
 
-window.saveConfig = window.saveConfig || function(){};
 </script>
 
 
