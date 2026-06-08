@@ -1,50 +1,59 @@
 <!DOCTYPE html>
-<!-- saved from url=(0068)file:///C:/Users/%EB%B0%95%EB%B2%94%EC%B0%BD/Downloads/index_30.html -->
+<!-- saved from url=(0068)file:///C:/Users/%EB%B0%95%EB%B2%94%EC%B0%BD/Downloads/index_33.html -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#141412">
+<meta name="theme-color" content="#faf8f3">
 <title>주문관리</title>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link href="./주문관리_files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
-  --bg:#141412;
-  --bg2:#1c1c1a;
-  --bg3:#252523;
-  --bg4:#2e2e2b;
-  --border:rgba(255,255,255,0.07);
-  --border2:rgba(255,255,255,0.13);
-  --text:#e8e7e3;
-  --t2:#9a9990;
-  --t3:#5a5a55;
-  --green:#1fba88;
-  --gbg:rgba(31,186,136,0.12);
-  --gdk:#0d7a58;
-  --amber:#c98a20;
-  --abg:rgba(201,138,32,0.12);
-  --adk:#8a5e0d;
-  --blue:#4a8fd4;
-  --bbg:rgba(74,143,212,0.12);
+  --bg:#faf8f3;
+  --bg2:#ffffff;
+  --bg3:#f6f3ec;
+  --bg4:#efece3;
+  --border:rgba(60,50,30,0.09);
+  --border2:rgba(60,50,30,0.16);
+  --text:#2b2620;
+  --t2:#7a7468;
+  --t3:#aba596;
+  --green:#3f8f4f;
+  --gbg:rgba(63,143,79,0.10);
+  --gdk:#2c6e3a;
+  --amber:#c0822c;
+  --abg:#fbf4e6;
+  --adk:#8a5e1a;
+  --blue:#3a6fae;
+  --bbg:rgba(58,111,174,0.10);
+  --accent:#b6772a;
   --mono:'IBM Plex Mono',monospace;
   --tab:58px;
   --sb:env(safe-area-inset-bottom,0px);
   --st:env(safe-area-inset-top,0px);
-  --r:12px;--rs:9px;
+  --r:14px;--rs:10px;
 }
 html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);overflow:hidden}
-.shell{display:flex;flex-direction:column;height:100dvh;max-width:480px;margin:0 auto}
+.shell{display:flex;flex-direction:column;height:100dvh}
 
+.tabbar-wrap{flex-shrink:0;background:var(--bg2);border-top:1px solid var(--border)}
 /* TOPBAR */
 .topbar{
   flex-shrink:0;background:var(--bg2);
   border-bottom:1px solid var(--border);
-  padding:calc(var(--st)+12px) 18px 12px;
+  padding-top:var(--st);
+}
+.topbar-inner{
+  max-width:600px;margin:0 auto;
+  padding:16px 20px 14px;
   display:flex;align-items:center;justify-content:space-between;
 }
-.brand{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.01em}
-.brand span{color:var(--t3);font-weight:400;margin-left:2px}
+.brand{font-size:18px;font-weight:700;color:var(--accent);letter-spacing:-0.01em}
+.brand span{color:var(--t3);font-weight:500;margin-left:4px}
+.sync{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.sync-dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.sync-txt{font-size:12px;color:var(--t2);font-weight:500}
 .date-badge{
   font-family:var(--mono);font-size:12px;font-weight:500;
   color:var(--t2);background:var(--bg3);
@@ -58,22 +67,23 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
   opacity:0;pointer-events:none;transition:opacity .15s;
   padding-bottom:calc(var(--tab)+var(--sb)+16px)}
 .page.active{opacity:1;pointer-events:all}
+.page > *{max-width:600px;margin-left:auto;margin-right:auto}
 
 /* TABBAR */
 .tabbar{
   flex-shrink:0;height:calc(var(--tab)+var(--sb));
-  background:var(--bg2);border-top:1px solid var(--border);
   display:flex;align-items:flex-start;padding-top:8px;padding-bottom:var(--sb);
+  max-width:600px;margin:0 auto;width:100%;
 }
 .tab-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
   cursor:pointer;border:none;background:none;padding:0;color:var(--t3);transition:color .14s}
-.tab-btn.active{color:var(--green)}
+.tab-btn.active{color:var(--accent)}
 .tab-icon{font-size:20px;line-height:1}
 .tab-label{font-size:10px;font-weight:500;font-family:var(--mono);letter-spacing:0.04em}
 
 /* STATS */
 .stats-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 14px 6px}
-.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:15px 16px;box-shadow:0 1px 2px rgba(60,50,30,0.03)}
 .stat-label{font-size:10px;font-weight:500;color:var(--t3);margin-bottom:6px;
   font-family:var(--mono);letter-spacing:0.06em;text-transform:uppercase}
 .stat-val{font-size:28px;font-weight:700;color:var(--text);letter-spacing:-0.03em;font-family:var(--mono)}
@@ -81,8 +91,8 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
 
 /* SEC HEAD */
 .sec-head{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 10px}
-.sec-label{font-size:10px;font-weight:500;color:var(--t3);
-  font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase}
+.sec-label{font-size:11px;font-weight:600;color:var(--t2);
+  font-family:var(--mono);letter-spacing:0.06em;text-transform:uppercase}
 .text-btn{font-size:12px;color:var(--green);font-weight:600;border:none;background:none;
   cursor:pointer;padding:5px 10px;border-radius:7px;font-family:'Noto Sans KR',sans-serif;
   background:var(--gbg);transition:opacity .12s}
@@ -104,9 +114,10 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
 .order-list{padding:0 14px 10px;display:flex;flex-direction:column;gap:7px}
 .order-card{
   background:var(--bg2);border:1px solid var(--border);
-  border-radius:var(--r);padding:13px 14px;
-  display:flex;align-items:center;gap:11px;
+  border-radius:var(--r);padding:14px 15px;
+  display:flex;align-items:center;gap:12px;
   cursor:pointer;position:relative;transition:opacity .18s;
+  box-shadow:0 1px 2px rgba(60,50,30,0.03);
 }
 .order-card.done{opacity:.35}
 .order-card.done .oc-co{text-decoration:line-through;color:var(--t3)}
@@ -116,10 +127,10 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;cursor:pointer;font-size:12px;transition:all .13s;
 }
-.cb.on{background:var(--green);border-color:var(--green);color:#0a1a14}
+.cb.on{background:var(--green);border-color:var(--green);color:#fff}
 .oc-body{flex:1;min-width:0;overflow:hidden}
 .oc-row{display:flex;align-items:baseline;gap:8px;overflow:hidden}
-.oc-co{font-size:14px;font-weight:700;white-space:nowrap;flex-shrink:0;color:var(--text)}
+.oc-co{font-size:15px;font-weight:700;white-space:nowrap;flex-shrink:0;color:var(--text)}
 .oc-lines{font-size:12px;color:var(--t2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .oc-memo{font-size:11px;color:var(--t3);margin-top:4px;font-family:var(--mono)}
 .del-btn{position:absolute;top:10px;right:11px;font-size:14px;color:var(--t3);
@@ -129,12 +140,12 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
 /* FAB */
 .fab{
   position:fixed;bottom:calc(var(--tab)+var(--sb)+16px);
-  right:max(16px,calc(50% - 224px));
+  right:max(16px,calc(50% - 284px));
   width:50px;height:50px;
-  background:var(--green);color:#0a1a14;
+  background:var(--green);color:#fff;
   border-radius:14px;border:none;font-size:24px;
   display:flex;align-items:center;justify-content:center;
-  cursor:pointer;box-shadow:0 4px 24px rgba(31,186,136,0.3);
+  cursor:pointer;box-shadow:0 4px 18px rgba(22,145,106,0.25);
   transition:transform .12s;z-index:40;font-weight:700;
 }
 .fab:active{transform:scale(.91)}
@@ -144,14 +155,14 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
 .seg-btn{flex:1;font-size:12px;padding:7px 0;text-align:center;border-radius:8px;
   cursor:pointer;color:var(--t2);border:none;background:none;font-weight:500;
   transition:all .13s;font-family:var(--mono);}
-.seg-btn.on{background:var(--bg4);color:var(--text);border:1px solid var(--border2);font-weight:600}
+.seg-btn.on{background:var(--bg2);color:var(--accent);border:1px solid var(--border2);font-weight:700;box-shadow:0 1px 2px rgba(60,50,30,0.04)}
 .date-picker-row{display:none;padding:10px 14px 0;gap:8px;align-items:center}
 .date-picker-row.show{display:flex}
 .date-inp{flex:1;padding:9px 11px;background:var(--bg3);border:1px solid var(--border2);
   border-radius:var(--rs);font-size:12px;color:var(--text);
-  font-family:var(--mono);outline:none;color-scheme:dark}
+  font-family:var(--mono);outline:none;color-scheme:light}
 .hist-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 14px 4px}
-.hstat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:13px 15px}
+.hstat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:15px 16px;box-shadow:0 1px 2px rgba(60,50,30,0.03)}
 .hstat-label{font-size:10px;font-weight:500;color:var(--t3);margin-bottom:5px;
   font-family:var(--mono);letter-spacing:0.06em;text-transform:uppercase}
 .hstat-val{font-size:22px;font-weight:700;letter-spacing:-0.02em;font-family:var(--mono);color:var(--text)}
@@ -160,7 +171,7 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
 .day-label{font-size:11px;font-weight:600;color:var(--t2);font-family:var(--mono)}
 .day-count{font-size:11px;color:var(--t3);font-family:var(--mono)}
 .hist-rows{display:flex;flex-direction:column;gap:6px;margin-bottom:4px}
-.hist-row{display:flex;align-items:center;gap:9px;padding:10px 13px;
+.hist-row{display:flex;align-items:center;gap:10px;padding:11px 14px;
   background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs)}
 .hdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .hdot.done{background:var(--green)}.hdot.pend{background:var(--bg4);border:1px solid var(--border2)}
@@ -183,7 +194,7 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
 .upload-drop-sub{font-size:10px;color:var(--t3);margin-top:4px;font-family:var(--mono)}
 .cl-list{padding:0 14px 10px;display:flex;flex-direction:column;gap:7px}
 .cl-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);
-  padding:13px 14px;display:flex;align-items:center;gap:11px;position:relative}
+  padding:14px 15px;display:flex;align-items:center;gap:12px;position:relative;box-shadow:0 1px 2px rgba(60,50,30,0.03)}
 .av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;
   justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;font-family:var(--mono)}
 .cl-info{flex:1;min-width:0}
@@ -201,7 +212,7 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
 /* BLEND */
 .blend-list{padding:0 14px 10px;display:flex;flex-direction:column;gap:7px}
 .blend-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);
-  padding:14px 15px;cursor:pointer;position:relative}
+  padding:15px 16px;cursor:pointer;position:relative;box-shadow:0 1px 2px rgba(60,50,30,0.03)}
 .blend-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px}
 .blend-bars{display:flex;flex-direction:column;gap:6px}
 .bbar-row{display:flex;align-items:center;gap:9px}
@@ -214,7 +225,7 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
   border:none;background:none;cursor:pointer;padding:4px}
 
 /* MODAL */
-.overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.6);
+.overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.35);
   display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .18s}
 .overlay.show{opacity:1;pointer-events:all}
 .sheet{background:var(--bg2);border-radius:18px 18px 0 0;border-top:1px solid var(--border);
@@ -232,20 +243,20 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
   background:var(--bg3);border:1px solid var(--border2);
   border-radius:var(--rs);font-size:14px;color:var(--text);
   font-family:'Noto Sans KR',sans-serif;outline:none;-webkit-appearance:none;
-  color-scheme:dark;
+  color-scheme:light;
 }
 .field input::placeholder,.field textarea::placeholder{color:var(--t3)}
 .field textarea{resize:none}
 .sheet-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:8px}
 .btn-cancel{padding:12px;border-radius:var(--rs);background:var(--bg3);color:var(--t2);
   border:1px solid var(--border2);font-size:13px;font-weight:500;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
-.btn-save{padding:12px;border-radius:var(--rs);background:var(--green);color:#0a1a14;
+.btn-save{padding:12px;border-radius:var(--rs);background:var(--green);color:#fff;
   border:none;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
 
 /* AUTOCOMPLETE */
 .co-suggest{display:none;position:absolute;left:0;right:0;top:calc(100% + 3px);
   background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rs);
-  z-index:200;max-height:180px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+  z-index:200;max-height:180px;overflow-y:auto;box-shadow:0 6px 20px rgba(0,0,0,0.12)}
 .co-si{padding:10px 14px;font-size:13px;cursor:pointer;
   border-bottom:1px solid var(--border);color:var(--text)}
 .co-si:last-child{border-bottom:none}
@@ -257,7 +268,7 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
 .ri-name{flex:2;padding:9px 11px;background:var(--bg3);border:1px solid var(--border2);
   border-radius:8px;font-size:13px;font-family:'Noto Sans KR',sans-serif;outline:none;color:var(--text)}
 .ri-pct{flex:1;padding:9px 11px;background:var(--bg3);border:1px solid var(--border2);
-  border-radius:8px;font-size:13px;font-family:var(--mono);outline:none;color:var(--text);color-scheme:dark}
+  border-radius:8px;font-size:13px;font-family:var(--mono);outline:none;color:var(--text);color-scheme:light}
 .ratio-del{font-size:18px;color:var(--t3);border:none;background:none;cursor:pointer;padding:2px 4px;flex-shrink:0}
 .ratio-add{font-size:12px;color:var(--green);font-weight:600;border:none;background:none;
   cursor:pointer;padding:4px 8px;border-radius:7px;font-family:var(--mono);margin-top:2px;
@@ -274,7 +285,7 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
   font-size:12px;font-weight:500;padding:10px 18px;border-radius:20px;
   opacity:0;transition:all .22s;pointer-events:none;white-space:nowrap;z-index:300;
   font-family:var(--mono);letter-spacing:0.02em;
-  box-shadow:0 4px 20px rgba(0,0,0,0.4)}
+  box-shadow:0 4px 16px rgba(0,0,0,0.12)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
@@ -282,35 +293,37 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
 <div class="shell">
 
   <div class="topbar">
-    <div class="brand">주문관리</div>
-    <div id="todayLabel" class="date-badge">2026.06.08 (월)</div>
+    <div class="topbar-inner">
+      <div class="brand">ULL<span>/ 주문관리</span></div>
+      <div id="todayLabel" class="date-badge">2026.06.08 (월)</div>
+    </div>
   </div>
 
   <div class="pages">
 
     <!-- ① 오늘 -->
-    <div class="page active" id="page-today">
+    <div class="page" id="page-today">
       <div class="stats-row">
-        <div class="stat-card"><div class="stat-label">TODAY</div><div class="stat-val" id="s-total">0</div></div>
-        <div class="stat-card"><div class="stat-label">DONE</div><div class="stat-val g" id="s-done">0</div></div>
+        <div class="stat-card"><div class="stat-label">오늘 주문</div><div class="stat-val" id="s-total">0</div></div>
+        <div class="stat-card"><div class="stat-label">봉투 완료</div><div class="stat-val g" id="s-done">0</div></div>
       </div>
       <div class="search-outer">
         <span class="search-ic">🔍</span>
         <input class="search-inp" type="search" placeholder="거래처 또는 품목 검색" id="todaySearch" oninput="renderToday()">
       </div>
       <div class="sec-head">
-        <div class="sec-label">PENDING <span id="s-remain" style="color:var(--text);font-weight:700">0</span></div>
+        <div class="sec-label">미완료 <span id="s-remain" style="color:var(--text);font-weight:700">0</span></div>
         <button class="text-btn" onclick="openAdd()">+ 직접 추가</button>
       </div>
-      <div class="order-list" id="order-list"><div class="empty"><div class="empty-ic">📭</div><div class="empty-txt">NO ORDERS TODAY</div></div></div>
+      <div class="order-list" id="order-list"><div class="empty"><div class="empty-ic">📭</div><div class="empty-txt">오늘 주문이 없어요</div></div></div>
     </div>
 
     <!-- ② 내역 -->
     <div class="page" id="page-history">
       <div class="seg">
-        <button class="seg-btn on" onclick="setSeg(this,&#39;week&#39;)">THIS WEEK</button>
-        <button class="seg-btn" onclick="setSeg(this,&#39;month&#39;)">THIS MONTH</button>
-        <button class="seg-btn" onclick="setSeg(this,&#39;date&#39;)">📅 DATE</button>
+        <button class="seg-btn on" onclick="setSeg(this,&#39;week&#39;)">이번 주</button>
+        <button class="seg-btn" onclick="setSeg(this,&#39;month&#39;)">이번 달</button>
+        <button class="seg-btn" onclick="setSeg(this,&#39;date&#39;)">📅 날짜</button>
       </div>
       <div class="date-picker-row" id="date-picker-row">
         <input type="date" id="hist-from" class="date-inp" onchange="renderHistory()">
@@ -318,31 +331,31 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
         <input type="date" id="hist-to" class="date-inp" onchange="renderHistory()">
       </div>
       <div class="hist-stats">
-        <div class="hstat"><div class="hstat-label">TOTAL</div><div class="hstat-val" id="h-total">—</div></div>
-        <div class="hstat"><div class="hstat-label">DONE %</div><div class="hstat-val" id="h-rate">—</div></div>
+        <div class="hstat"><div class="hstat-label">총 주문</div><div class="hstat-val" id="h-total">0</div></div>
+        <div class="hstat"><div class="hstat-label">완료율</div><div class="hstat-val" id="h-rate">—</div></div>
       </div>
       <div class="search-outer" style="padding-top:4px">
         <span class="search-ic">🔍</span>
         <input class="search-inp" type="search" placeholder="거래처 또는 품목 검색" id="histSearch" oninput="renderHistory()">
       </div>
-      <div id="hist-body"></div>
+      <div id="hist-body"><div class="empty"><div class="empty-ic">📭</div><div class="empty-txt">내역이 없어요</div></div></div>
     </div>
 
     <!-- ③ 거래처 -->
     <div class="page" id="page-clients">
       <div class="cl-toolbar">
-        <div class="sec-label">CLIENTS</div>
+        <div class="sec-label">거래처 목록</div>
         <div class="btn-row">
-          <button class="outline-btn" onclick="toggleUploadPanel()">EXCEL</button>
+          <button class="outline-btn" onclick="toggleUploadPanel()">엑셀 업로드</button>
           <button class="text-btn" onclick="openAddClient()">+ 추가</button>
         </div>
       </div>
       <div class="upload-panel" id="upload-panel">
-        <div style="font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px;font-family:var(--mono)">EXCEL IMPORT</div>
+        <div style="font-size:11px;font-weight:700;color:var(--blue);margin-bottom:6px;font-family:var(--mono)">엑셀 일괄 등록</div>
         <div style="font-size:11px;color:var(--t2);margin-bottom:10px;line-height:1.6;font-family:var(--mono)">1열: 거래처명 / 2열: 주요품목<br>첫 행 헤더 자동 스킵</div>
         <div class="upload-drop" onclick="document.getElementById(&#39;xl-input&#39;).click()">
           <input type="file" id="xl-input" accept=".xlsx,.xls,.csv" style="display:none" onchange="handleUpload(this)">
-          <div class="upload-drop-text">SELECT FILE</div>
+          <div class="upload-drop-text">파일 선택</div>
           <div class="upload-drop-sub">.xlsx · .xls · .csv</div>
         </div>
       </div>
@@ -350,29 +363,31 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
         <span class="search-ic">🔍</span>
         <input class="search-inp" type="search" placeholder="거래처 검색" id="clientSearch" oninput="renderClients()">
       </div>
-      <div class="cl-list" id="cl-list"></div>
+      <div class="cl-list" id="cl-list"><div class="empty"><div class="empty-ic">🏪</div><div class="empty-txt">거래처가 없어요</div></div></div>
     </div>
 
     <!-- ④ 블렌드 -->
-    <div class="page" id="page-blend">
+    <div class="page active" id="page-blend">
       <div class="sec-head">
-        <div class="sec-label">BLEND</div>
+        <div class="sec-label">블렌드 비율</div>
         <button class="text-btn" onclick="openAddBlend()">+ 추가</button>
       </div>
       <div class="search-outer">
         <span class="search-ic">🔍</span>
         <input class="search-inp" type="search" placeholder="블렌드명 또는 거래처 검색" id="blendSearch" oninput="renderBlends()">
       </div>
-      <div class="blend-list" id="blend-list"></div>
+      <div class="blend-list" id="blend-list"><div class="empty"><div class="empty-ic">☕</div><div class="empty-txt">블렌드가 없어요</div></div></div>
     </div>
 
   </div>
 
-  <div class="tabbar">
-    <button class="tab-btn active" onclick="showPage(&#39;today&#39;,this)"><span class="tab-icon">📋</span><span class="tab-label">TODAY</span></button>
-    <button class="tab-btn" onclick="showPage(&#39;history&#39;,this)"><span class="tab-icon">📅</span><span class="tab-label">HISTORY</span></button>
-    <button class="tab-btn" onclick="showPage(&#39;clients&#39;,this)"><span class="tab-icon">🏪</span><span class="tab-label">CLIENTS</span></button>
-    <button class="tab-btn" onclick="showPage(&#39;blend&#39;,this)"><span class="tab-icon">☕</span><span class="tab-label">BLEND</span></button>
+  <div class="tabbar-wrap">
+    <div class="tabbar">
+      <button class="tab-btn" onclick="showPage(&#39;today&#39;,this)"><span class="tab-icon">📋</span><span class="tab-label">오늘</span></button>
+      <button class="tab-btn" onclick="showPage(&#39;history&#39;,this)"><span class="tab-icon">📅</span><span class="tab-label">내역</span></button>
+      <button class="tab-btn" onclick="showPage(&#39;clients&#39;,this)"><span class="tab-icon">🏪</span><span class="tab-label">거래처</span></button>
+      <button class="tab-btn active" onclick="showPage(&#39;blend&#39;,this)"><span class="tab-icon">☕</span><span class="tab-label">블렌드</span></button>
+    </div>
   </div>
 </div>
 
@@ -553,7 +568,7 @@ function startApp(cfg) {
     var sq=(document.getElementById('todaySearch')?document.getElementById('todaySearch').value.toLowerCase():'');
     if(sq)tod=tod.filter(function(o){return o.company.toLowerCase().indexOf(sq)>=0||(o.lines||[]).join(' ').toLowerCase().indexOf(sq)>=0});
     var list=document.getElementById('order-list');
-    if(!tod.length){list.innerHTML='<div class="empty"><div class="empty-ic">📭</div><div class="empty-txt">'+(sq?'NO RESULTS':'NO ORDERS TODAY')+'</div></div>';return}
+    if(!tod.length){list.innerHTML='<div class="empty"><div class="empty-ic">📭</div><div class="empty-txt">'+(sq?'검색 결과가 없어요':'오늘 주문이 없어요')+'</div></div>';return}
     var sorted=tod.filter(function(o){return!o.done}).concat(tod.filter(function(o){return o.done}));
     list.innerHTML=sorted.map(function(o){
       var lt=(o.lines||[]).join(' · ');
@@ -647,8 +662,8 @@ function startApp(cfg) {
       if(line)items.push(line);
     });
     parsedOrder={company:company||lines[0]||'',lines:items};
-    document.getElementById('pr-co').textContent='COMPANY: '+(parsedOrder.company||'?');
-    document.getElementById('pr-it').textContent='ITEMS: '+(parsedOrder.lines.join(', ')||'?');
+    document.getElementById('pr-co').textContent='거래처: '+(parsedOrder.company||'?');
+    document.getElementById('pr-it').textContent='품목: '+(parsedOrder.lines.join(', ')||'?');
     document.getElementById('parse-box').style.display='block';
   };
   window.applyPaste=function(){
@@ -692,10 +707,10 @@ function startApp(cfg) {
     filtered.forEach(function(o){if(!byD[o.date])byD[o.date]=[];byD[o.date].push(o)});
     var dates=Object.keys(byD).sort(function(a,b){return b<a?-1:b>a?1:0});
     var body=document.getElementById('hist-body');
-    if(!dates.length){body.innerHTML='<div class="empty"><div class="empty-ic">📭</div><div class="empty-txt">'+(hq?'NO RESULTS':'NO HISTORY')+'</div></div>';return}
+    if(!dates.length){body.innerHTML='<div class="empty"><div class="empty-ic">📭</div><div class="empty-txt">'+(hq?'검색 결과가 없어요':'내역이 없어요')+'</div></div>';return}
     body.innerHTML=dates.map(function(dt){
       var ds2=byD[dt];
-      var label=dt===todayStr?'TODAY ('+fd(dt)+')':fd(dt);
+      var label=dt===todayStr?'오늘 ('+fd(dt)+')':fd(dt);
       var rows=ds2.map(function(o){
         return'<div class="hist-row">'
           +'<div class="hdot '+(o.done?'done':'pend')+'"></div>'
@@ -774,11 +789,11 @@ function startApp(cfg) {
     orders.forEach(function(o){cm[o.company]=(cm[o.company]||0)+1;if(!lm[o.company]||o.date>lm[o.company])lm[o.company]=o.date});
     list.sort(function(a,b){return(cm[b.name]||0)-(cm[a.name]||0)});
     var wrap=document.getElementById('cl-list');
-    if(!list.length){wrap.innerHTML='<div class="empty"><div class="empty-ic">🏪</div><div class="empty-txt">NO CLIENTS</div></div>';return}
+    if(!list.length){wrap.innerHTML='<div class="empty"><div class="empty-ic">🏪</div><div class="empty-txt">거래처가 없어요</div></div>';return}
     wrap.innerHTML=list.map(function(c,i){
       var col=AV[i%AV.length];var bg=col[0],tc=col[1];
       var cnt=cm[c.name]||0;var last=lm[c.name];
-      var ll=!last?'—':last===todayStr?'TODAY':last===yday()?'YESTERDAY':fd(last);
+      var ll=!last?'—':last===todayStr?'오늘':last===yday()?'어제':fd(last);
       var fc=cnt>=20?'fh':cnt>=8?'fm':'fl';
       var ft=cnt>=20?'주 3회↑':cnt>=8?'주 1~2회':'간헐적';
       return'<div class="cl-card">'
@@ -822,7 +837,7 @@ function startApp(cfg) {
     var list=document.getElementById('blend-list');
     var bq=(document.getElementById('blendSearch')?document.getElementById('blendSearch').value.toLowerCase():'');
     var bdata=bq?blends.filter(function(b){return b.name.toLowerCase().indexOf(bq)>=0||(b.client||'').toLowerCase().indexOf(bq)>=0}):blends;
-    if(!bdata.length){list.innerHTML='<div class="empty"><div class="empty-ic">☕</div><div class="empty-txt">'+(bq?'NO RESULTS':'NO BLENDS')+'</div></div>';return}
+    if(!bdata.length){list.innerHTML='<div class="empty"><div class="empty-ic">☕</div><div class="empty-txt">'+(bq?'검색 결과가 없어요':'블렌드가 없어요')+'</div></div>';return}
     list.innerHTML=bdata.map(function(b){
       var total=b.ratios.reduce(function(s,r){return s+(parseFloat(r.pct)||0)},0)||1;
       var bars=b.ratios.map(function(r,i){
