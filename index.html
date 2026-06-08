@@ -520,9 +520,9 @@ function startApp(cfg) {
           ['rgba(201,138,32,.15)','#c98a20'],['rgba(192,80,80,.15)','#c05050'],
           ['rgba(140,100,200,.15)','#8c64c8']];
   var BC=['#1fba88','#c98a20','#4a8fd4','#c05050','#8c64c8','#9a9990'];
-  var now=new Date(), todayStr=ds(now);
-
   function ds(d){return d.toISOString().slice(0,10)}
+  function todayStr(){return ds(new Date())}
+  var lastDay=todayStr();
   function fd(s){var d=new Date(s+'T00:00:00');return(d.getMonth()+1)+'/'+d.getDate()+'('+DAYS[d.getDay()]+')'}
   function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
   function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2)}
@@ -530,8 +530,23 @@ function startApp(cfg) {
   function yday(){var d=new Date();d.setDate(d.getDate()-1);return ds(d)}
 
   // INIT
-  document.getElementById('todayLabel').textContent=
-    now.getFullYear()+'.'+String(now.getMonth()+1).padStart(2,'0')+'.'+String(now.getDate()).padStart(2,'0')+' ('+DAYS[now.getDay()]+')';
+  function updateDateLabel(){
+    var n=new Date();
+    document.getElementById('todayLabel').textContent=
+      n.getFullYear()+'.'+String(n.getMonth()+1).padStart(2,'0')+'.'+String(n.getDate()).padStart(2,'0')+' ('+DAYS[n.getDay()]+')';
+  }
+  updateDateLabel();
+  // 자정 넘어가면 자동 갱신 (1분마다 체크)
+  setInterval(function(){
+    var t=todayStr();
+    if(t!==lastDay){
+      lastDay=t;
+      updateDateLabel();
+      renderToday();
+      if(currentPage==='history')renderHistory();
+      if(currentPage==='clients')renderClients();
+    }
+  },60000);
 
   // FIRESTORE LISTENERS
   onSnapshot(query(collection(db,'orders'),orderBy('createdAt','desc')),function(snap){
@@ -567,7 +582,7 @@ function startApp(cfg) {
 
   // TODAY
   function renderToday(){
-    var tod=orders.filter(function(o){return o.date===todayStr});
+    var tod=orders.filter(function(o){return o.date===todayStr()});
     var done=tod.filter(function(o){return o.done}).length;
     document.getElementById('s-total').textContent=tod.length;
     document.getElementById('s-done').textContent=done;
@@ -600,7 +615,7 @@ function startApp(cfg) {
     document.getElementById('f-co').value='';
     document.getElementById('f-lines').value='';
     document.getElementById('f-memo').value='';
-    document.getElementById('f-date').value=todayStr;
+    document.getElementById('f-date').value=todayStr();
     document.getElementById('addModal').classList.add('show');
     setTimeout(function(){document.getElementById('f-co').focus()},300);
   };
@@ -611,7 +626,7 @@ function startApp(cfg) {
     document.getElementById('f-co').value=o.company||'';
     document.getElementById('f-lines').value=(o.lines||[]).join('\n');
     document.getElementById('f-memo').value=o.memo||'';
-    document.getElementById('f-date').value=o.date||todayStr;
+    document.getElementById('f-date').value=o.date||todayStr();
     document.getElementById('addModal').classList.add('show');
   };
   window.closeAdd=function(){document.getElementById('addModal').classList.remove('show');hideSuggest()};
@@ -619,7 +634,7 @@ function startApp(cfg) {
     var company=document.getElementById('f-co').value.trim();
     var lraw=document.getElementById('f-lines').value.trim();
     var memo=document.getElementById('f-memo').value.trim();
-    var date=document.getElementById('f-date').value||todayStr;
+    var date=document.getElementById('f-date').value||todayStr();
     if(!company){toast('거래처명을 입력해주세요');return}
     if(!lraw){toast('품목·수량을 입력해주세요');return}
     var lines=lraw.split('\n').map(function(s){return s.trim()}).filter(Boolean);
@@ -675,7 +690,7 @@ function startApp(cfg) {
   };
   window.applyPaste=function(){
     if(!parsedOrder){toast('텍스트를 붙여넣어주세요');return}
-    addDoc(collection(db,'orders'),{company:parsedOrder.company,lines:parsedOrder.lines,memo:'',date:todayStr,done:false,createdAt:Timestamp.now()})
+    addDoc(collection(db,'orders'),{company:parsedOrder.company,lines:parsedOrder.lines,memo:'',date:todayStr(),done:false,createdAt:Timestamp.now()})
       .then(function(){closePaste();toast('추가했어요')}).catch(function(e){toast('ERR: '+e.message)});
   };
 
@@ -687,8 +702,8 @@ function startApp(cfg) {
     var row=document.getElementById('date-picker-row');
     if(seg==='date'){
       row.classList.add('show');
-      if(!document.getElementById('hist-to').value)document.getElementById('hist-to').value=todayStr;
-      if(!document.getElementById('hist-from').value){var d=new Date(todayStr);d.setDate(d.getDate()-6);document.getElementById('hist-from').value=ds(d)}
+      if(!document.getElementById('hist-to').value)document.getElementById('hist-to').value=todayStr();
+      if(!document.getElementById('hist-from').value){var d=new Date(todayStr());d.setDate(d.getDate()-6);document.getElementById('hist-from').value=ds(d)}
     }else{row.classList.remove('show')}
     renderHistory();
   };
@@ -717,7 +732,7 @@ function startApp(cfg) {
     if(!dates.length){body.innerHTML='<div class="empty"><div class="empty-ic">📭</div><div class="empty-txt">'+(hq?'검색 결과가 없어요':'내역이 없어요')+'</div></div>';return}
     body.innerHTML=dates.map(function(dt){
       var ds2=byD[dt].slice().sort(function(a,b){var ta=a.createdAt&&a.createdAt.seconds?a.createdAt.seconds:0;var tb=b.createdAt&&b.createdAt.seconds?b.createdAt.seconds:0;return ta-tb});
-      var label=dt===todayStr?'오늘 ('+fd(dt)+')':fd(dt);
+      var label=dt===todayStr()?'오늘 ('+fd(dt)+')':fd(dt);
       var rows=ds2.map(function(o){
         return'<div class="hist-row">'
           +'<div class="hdot '+(o.done?'done':'pend')+'"></div>'
@@ -800,7 +815,7 @@ function startApp(cfg) {
     wrap.innerHTML=list.map(function(c,i){
       var col=AV[i%AV.length];var bg=col[0],tc=col[1];
       var cnt=cm[c.name]||0;var last=lm[c.name];
-      var ll=!last?'—':last===todayStr?'오늘':last===yday()?'어제':fd(last);
+      var ll=!last?'—':last===todayStr()?'오늘':last===yday()?'어제':fd(last);
       var fc=cnt>=20?'fh':cnt>=8?'fm':'fl';
       var ft=cnt>=20?'주 3회↑':cnt>=8?'주 1~2회':'간헐적';
       return'<div class="cl-card">'
