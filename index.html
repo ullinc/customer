@@ -520,7 +520,7 @@ function startApp(cfg) {
           ['rgba(201,138,32,.15)','#c98a20'],['rgba(192,80,80,.15)','#c05050'],
           ['rgba(140,100,200,.15)','#8c64c8']];
   var BC=['#1fba88','#c98a20','#4a8fd4','#c05050','#8c64c8','#9a9990'];
-  function ds(d){return d.toISOString().slice(0,10)}
+  function ds(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
   function todayStr(){return ds(new Date())}
   var lastDay=todayStr();
   function fd(s){var d=new Date(s+'T00:00:00');return(d.getMonth()+1)+'/'+d.getDate()+'('+DAYS[d.getDay()]+')'}
@@ -703,7 +703,7 @@ function startApp(cfg) {
     if(seg==='date'){
       row.classList.add('show');
       if(!document.getElementById('hist-to').value)document.getElementById('hist-to').value=todayStr();
-      if(!document.getElementById('hist-from').value){var d=new Date(todayStr());d.setDate(d.getDate()-6);document.getElementById('hist-from').value=ds(d)}
+      if(!document.getElementById('hist-from').value){var d=new Date(todayStr()+'T00:00:00');d.setDate(d.getDate()-6);document.getElementById('hist-from').value=ds(d)}
     }else{row.classList.remove('show')}
     renderHistory();
   };
