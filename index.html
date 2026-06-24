@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0068)file:///C:/Users/%EB%B0%95%EB%B2%94%EC%B0%BD/Downloads/index_10.html -->
+<!-- saved from url=(0068)file:///C:/Users/%EB%B0%95%EB%B2%94%EC%B0%BD/Downloads/index_20.html -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -295,7 +295,7 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
   <div class="topbar">
     <div class="topbar-inner">
       <div class="brand">ULL<span>/ 주문관리</span></div>
-      <div id="todayLabel" class="date-badge">2026.06.09 (화)</div>
+      <div id="todayLabel" class="date-badge">2026.06.24 (수)</div>
     </div>
   </div>
 
@@ -305,8 +305,8 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
     <div class="page active" id="page-today">
       <div class="page-inner">
       <div class="stats-row">
-        <div class="stat-card"><div class="stat-label">오늘 주문</div><div class="stat-val" id="s-total">4</div></div>
-        <div class="stat-card"><div class="stat-label">봉투 완료</div><div class="stat-val g" id="s-done">4</div></div>
+        <div class="stat-card"><div class="stat-label">오늘 주문</div><div class="stat-val" id="s-total">17</div></div>
+        <div class="stat-card"><div class="stat-label">봉투 완료</div><div class="stat-val g" id="s-done">17</div></div>
       </div>
       <div class="search-outer">
         <span class="search-ic">🔍</span>
@@ -314,9 +314,12 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
       </div>
       <div class="sec-head">
         <div class="sec-label">미완료 <span id="s-remain" style="color:var(--text);font-weight:700">0</span></div>
-        <button class="text-btn" onclick="openAdd()">+ 추가</button>
+        <div style="display:flex;gap:6px;align-items:center">
+          <button class="text-btn" onclick="openPaste()" style="color:var(--amber);background:var(--abg)">📋 붙여넣기</button>
+          <button class="text-btn" onclick="openAdd()">+ 추가</button>
+        </div>
       </div>
-      <div class="order-list" id="order-list"><div class="order-card done" onclick="openEdit(&#39;tQPT6QmXdamfULgHGh6V&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;tQPT6QmXdamfULgHGh6V&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">빈스커피</span><span class="oc-lines">다크 5</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;tQPT6QmXdamfULgHGh6V&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;YVkPYiVnVVIh4MHKlZlb&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;YVkPYiVnVVIh4MHKlZlb&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">헤일우드</span><span class="oc-lines">커스텀 10 · 디카 2</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;YVkPYiVnVVIh4MHKlZlb&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;TRUoq8DqChCGmdvAMzx5&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;TRUoq8DqChCGmdvAMzx5&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">시노라자하문로</span><span class="oc-lines">b 3 · n 5</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;TRUoq8DqChCGmdvAMzx5&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;8Q6yGYDieX5Vs3CTTINT&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;8Q6yGYDieX5Vs3CTTINT&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">브림(Brim)</span><span class="oc-lines">모모라 10</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;8Q6yGYDieX5Vs3CTTINT&#39;)">✕</button></div></div>
+      <div class="order-list" id="order-list"><div class="order-card done" onclick="openEdit(&#39;fekEdTz45bFnzEL6m404&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;fekEdTz45bFnzEL6m404&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">하루와(haruwa)</span><span class="oc-lines">원당커피(신규)   101002 원당커피 레귤러블렌드  1kg 개 5</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;fekEdTz45bFnzEL6m404&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;eZQHv16Qj2XjZiIfEIMv&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;eZQHv16Qj2XjZiIfEIMv&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">카페냠</span><span class="oc-lines">다크 5</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;eZQHv16Qj2XjZiIfEIMv&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;sxaO901UyZVrhbqJejko&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;sxaO901UyZVrhbqJejko&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">와플로아구월힐캐슬점</span><span class="oc-lines">레귤러 5</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;sxaO901UyZVrhbqJejko&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;LfjUohoI85d5gWV0Wvh2&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;LfjUohoI85d5gWV0Wvh2&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">어로프헤븐(a loaf heaven)</span><span class="oc-lines">레귤러 5</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;LfjUohoI85d5gWV0Wvh2&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;zEUdYJaconLpnTYpy3nu&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;zEUdYJaconLpnTYpy3nu&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">시노라 (SINOLA)</span><span class="oc-lines">비플랫 5 · 나이트블룸 5</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;zEUdYJaconLpnTYpy3nu&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;qWZ3PZZqz6lx7H12YomO&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;qWZ3PZZqz6lx7H12YomO&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">샘물</span><span class="oc-lines">다크 2 · 데일리 8</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;qWZ3PZZqz6lx7H12YomO&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;9CPJnp1XMz6unmpBfooj&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;9CPJnp1XMz6unmpBfooj&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">스위트1225 목동힐스테이트점</span><span class="oc-lines">다크 6</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;9CPJnp1XMz6unmpBfooj&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;PU7bYhriFIaFVWUSyaqz&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;PU7bYhriFIaFVWUSyaqz&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">티케이에이치</span><span class="oc-lines">다크 3</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;PU7bYhriFIaFVWUSyaqz&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;KnGonqMCFXuYV14r5gdM&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;KnGonqMCFXuYV14r5gdM&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">카페 37 연천휴게소</span><span class="oc-lines">데일리 8</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;KnGonqMCFXuYV14r5gdM&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;0zUafvPuFlUTojlO1s5Z&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;0zUafvPuFlUTojlO1s5Z&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">카페쉐어링</span><span class="oc-lines">레귤러 50</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;0zUafvPuFlUTojlO1s5Z&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;IswHqE0amaT5DBFjXWzL&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;IswHqE0amaT5DBFjXWzL&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">얼론투게더(Alone,together)</span><span class="oc-lines">레귤러 5</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;IswHqE0amaT5DBFjXWzL&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;BAthqA3agPYjJ0ksZCin&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;BAthqA3agPYjJ0ksZCin&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">조윤주 대표님</span><span class="oc-lines">ull 레귤러 19 · ull 데일리 1</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;BAthqA3agPYjJ0ksZCin&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;8uuBZKh36wvO1Rfyyaua&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;8uuBZKh36wvO1Rfyyaua&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">바흐브</span><span class="oc-lines">데일리 5</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;8uuBZKh36wvO1Rfyyaua&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;0QqLJumAXrAM922eq1oZ&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;0QqLJumAXrAM922eq1oZ&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">쿠루(COORU)</span><span class="oc-lines">5</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;0QqLJumAXrAM922eq1oZ&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;JCFBY39SQLkszfBEok5e&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;JCFBY39SQLkszfBEok5e&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">하루와(haruwa)</span><span class="oc-lines">레귤러 5</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;JCFBY39SQLkszfBEok5e&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;rsPUkF6Mr8pYjG5nHPrl&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;rsPUkF6Mr8pYjG5nHPrl&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">비·버터리(B·Buttery)</span><span class="oc-lines">다크 12</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;rsPUkF6Mr8pYjG5nHPrl&#39;)">✕</button></div><div class="order-card done" onclick="openEdit(&#39;IyYzSIxbmYaBufuoor5M&#39;)"><div class="cb on" onclick="event.stopPropagation();toggleDone(&#39;IyYzSIxbmYaBufuoor5M&#39;,true)">✓</div><div class="oc-body"><div class="oc-row"><span class="oc-co">카페라리 성남시청점</span><span class="oc-lines">5</span></div></div><button class="del-btn" onclick="event.stopPropagation();delOrder(&#39;IyYzSIxbmYaBufuoor5M&#39;)">✕</button></div></div>
       </div>
     </div>
 
@@ -437,20 +440,21 @@ html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:var(--bg)
 <div class="overlay" id="pasteModal">
   <div class="sheet">
     <div class="sheet-handle"></div>
-    <div class="sheet-title">발주고 알림 붙여넣기</div>
+    <div class="sheet-title">주문내역 붙여넣기</div>
+    <div style="font-size:11px;color:var(--t3);margin-bottom:14px;line-height:1.5">PC·모바일 발주 표를 그대로 복사해서 붙여넣으세요. 거래처·품명·수량만 자동 추출되고, 연속된 같은 거래처는 한 건으로 묶여요. 날짜는 모두 오늘로 입력돼요.</div>
     <div class="field">
-      <label>알림 텍스트</label>
-      <textarea id="paste-txt" style="height:110px" placeholder="예
-[발주고] 카페드림 주문
-브라질원두 5kg" oninput="parsePaste()"></textarea>
+      <label>표 붙여넣기</label>
+      <textarea id="paste-txt" style="height:130px;font-family:var(--mono);font-size:12px;line-height:1.6" placeholder="시노라	시노라 비플랫	5
+	시노라 나이트블룸	5
+카페마찌	마루커피 다크 블렌드	5" oninput="parsePaste()"></textarea>
     </div>
-    <div id="parse-box" style="display:none;margin-top:10px;padding:11px 13px;background:var(--gbg);border-radius:9px;border:1px solid rgba(31,186,136,.2)">
-      <div style="font-size:12px;color:var(--green);font-family:var(--mono)" id="pr-co"></div>
-      <div style="font-size:12px;color:var(--green);margin-top:3px;font-family:var(--mono)" id="pr-it"></div>
+    <div id="parse-box" style="display:none;margin-top:6px;padding:11px 13px;background:var(--gbg);border-radius:9px;border:1px solid rgba(31,186,136,.2);max-height:240px;overflow-y:auto">
+      <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:8px;font-family:var(--mono)" id="pr-head"></div>
+      <div id="pr-list"></div>
     </div>
     <div class="sheet-actions">
       <button class="btn-cancel" onclick="closePaste()">취소</button>
-      <button class="btn-save" onclick="applyPaste()">추가</button>
+      <button class="btn-save" onclick="applyPaste()" id="pr-apply">추가</button>
     </div>
   </div>
 </div>
@@ -667,32 +671,103 @@ function startApp(cfg) {
   window.hideSuggest=hideSuggest;
   window.pickCo=function(name){document.getElementById('f-co').value=name;hideSuggest();document.getElementById('f-lines').focus()};
 
-  // PASTE
+  // PASTE (표 형식: 거래처 / 품명 / 수량, 여러 건)
+  var parsedOrders=[];
   window.openPaste=function(){document.getElementById('pasteModal').classList.add('show')};
   window.closePaste=function(){
     document.getElementById('pasteModal').classList.remove('show');
     document.getElementById('paste-txt').value='';
     document.getElementById('parse-box').style.display='none';
-    parsedOrder=null;
+    parsedOrders=[];
   };
+  function splitCols(line){
+    // 탭 우선(빈칸 보존), 없으면 2칸 이상 공백으로 분리
+    if(line.indexOf('\t')>=0) return line.split('\t').map(function(s){return s.trim()});
+    return line.split(/\s{2,}/).map(function(s){return s.trim()});
+  }
+  function stripUnit(item){
+    // 규격(1kg, 200g, 500ml)·단위(개, 봉, 박스 등) 토큰 제거
+    if(!item) return item;
+    var toks=item.split(/\s+/).filter(function(t){
+      if(/^\d+(\.\d+)?(kg|g|ml|l)$/i.test(t)) return false;
+      if(/^(개|봉|박스|팩|병|포|봉지|ea|pcs)$/i.test(t)) return false;
+      return true;
+    });
+    return toks.join(' ').trim();
+  }
   window.parsePaste=function(){
     var text=document.getElementById('paste-txt').value;
-    var lines=text.split('\n').map(function(l){return l.trim()}).filter(Boolean);
-    var company='',items=[];
-    lines.forEach(function(line,i){
-      if(line.match(/\[발주고\]|주문|발주/)){var co=line.replace(/\[발주고\]|\[.*?\]|주문|발주/g,'').trim();if(co&&!company)company=co;return}
-      if(!company&&i===0){company=line.replace(/\[.*?\]/g,'').trim();return}
-      if(line)items.push(line);
+    var rawLines=text.split('\n');
+    parsedOrders=[];
+    // 헤더/합계 줄 제외한 데이터 줄
+    var dataLines=rawLines.filter(function(l){
+      var t=l.trim();
+      if(!t) return false;
+      if(/^(거래처|합계)/.test(t)) return false;
+      return true;
     });
-    parsedOrder={company:company||lines[0]||'',lines:items};
-    document.getElementById('pr-co').textContent='거래처: '+(parsedOrder.company||'?');
-    document.getElementById('pr-it').textContent='품목: '+(parsedOrder.lines.join(', ')||'?');
-    document.getElementById('parse-box').style.display='block';
+    // PC 형식 감지: 품목코드(5~6자리) 컬럼 + 컬럼수 많음
+    var isPC=false;
+    for(var i=0;i<dataLines.length;i++){
+      var c=splitCols(dataLines[i]);
+      if(c.length>=8 && c.some(function(x){return /^\d{5,6}$/.test(x)})){ isPC=true; break; }
+    }
+    var lastCompany='';
+    dataLines.forEach(function(raw){
+      var cols=splitCols(raw);
+      var company='', item='', qty='';
+      if(isPC){
+        // PC 고정 컬럼: [0]거래처 [6]품명 [마지막]수량
+        company=cols[0]||'';
+        item=cols[6]||'';
+        if(!item){ for(var k=6;k<cols.length-1;k++){ if(cols[k]&&!/^\d+$/.test(cols[k])){item=cols[k];break;} } }
+        qty=cols[cols.length-1]||'';
+        if(!/^\d+(\.\d+)?$/.test(qty)){ for(var k2=cols.length-1;k2>=0;k2--){ if(/^\d+(\.\d+)?$/.test(cols[k2])){qty=cols[k2];break;} } }
+      } else {
+        // 모바일: 날짜칸 제거 후 [거래처][품명][수량]
+        var f=cols.filter(function(c){ return !/^\d{1,4}[\/\-]\d{1,2}([\/\-]\d{1,2})?$/.test(c) });
+        if(!f.length) return;
+        if(f[0]===''){ company=lastCompany; f.shift(); }
+        else { company=f[0]; f.shift(); }
+        if(f.length>=2 && /^\d+(\.\d+)?$/.test(f[f.length-1])){ qty=f[f.length-1]; item=f.slice(0,f.length-1).join(' '); }
+        else if(f.length===1){ var m=f[0].match(/^(.*?)\s*(\d+(?:\.\d+)?)\s*$/); if(m){item=m[1].trim();qty=m[2];}else item=f[0]; }
+        else item=f.join(' ');
+      }
+      item=stripUnit(item);
+      if(company) lastCompany=company; else company=lastCompany;
+      if(!company && !item) return;
+      var line=(item + (qty?(' '+qty):'')).trim();
+      if(!line) return;
+      var prev=parsedOrders[parsedOrders.length-1];
+      if(prev && prev.company===(company||'(미지정)')){
+        prev.lines.push(line);
+      } else {
+        parsedOrders.push({company:company||'(미지정)', lines:[line]});
+      }
+    });
+    var box=document.getElementById('parse-box');
+    if(!parsedOrders.length){ box.style.display='none'; return; }
+    var itemCount=parsedOrders.reduce(function(s,o){return s+o.lines.length},0);
+    document.getElementById('pr-head').textContent='✓ '+parsedOrders.length+'건 ('+itemCount+'품목) 인식됨';
+    document.getElementById('pr-list').innerHTML=parsedOrders.map(function(o){
+      var lineHtml=o.lines.map(function(l){return '<div style="font-size:11px;color:var(--t2);line-height:1.5">'+esc(l)+'</div>'}).join('');
+      return '<div style="display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid rgba(31,186,136,.12)">'
+        +'<span style="font-size:12px;font-weight:700;color:var(--text);width:84px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(o.company)+'</span>'
+        +'<span style="flex:1">'+lineHtml+'</span>'
+      +'</div>';
+    }).join('');
+    document.getElementById('pr-apply').textContent=parsedOrders.length+'건 추가';
+    box.style.display='block';
   };
   window.applyPaste=function(){
-    if(!parsedOrder){toast('텍스트를 붙여넣어주세요');return}
-    addDoc(collection(db,'orders'),{company:parsedOrder.company,lines:parsedOrder.lines,memo:'',date:todayStr(),done:false,createdAt:Timestamp.now()})
-      .then(function(){closePaste();toast('추가했어요')}).catch(function(e){toast('ERR: '+e.message)});
+    if(!parsedOrders.length){toast('표를 붙여넣어주세요');return}
+    var td=todayStr();
+    var promises=parsedOrders.map(function(o){
+      return addDoc(collection(db,'orders'),{company:o.company,lines:o.lines,memo:'',date:td,done:false,createdAt:Timestamp.now()});
+    });
+    Promise.all(promises)
+      .then(function(){var n=parsedOrders.length;closePaste();toast(n+'건 추가했어요')})
+      .catch(function(e){toast('ERR: '+e.message)});
   };
 
   // HISTORY
